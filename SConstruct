@@ -1277,6 +1277,7 @@ if endian == "auto":
 processor_macros = {
     'arm'        : { 'endian': 'little', 'defines': ('__arm__',) },
     'aarch64'    : { 'endian': 'little', 'defines': ('__arm64__', '__aarch64__')},
+    'riscv64'    : { 'endian': 'little', 'defines': ('__riscv', '__riscv64')},
     'i386'       : { 'endian': 'little', 'defines': ('__i386', '_M_IX86')},
     'ppc64le'    : { 'endian': 'little', 'defines': ('__powerpc64__',)},
     's390x'      : { 'endian': 'big',    'defines': ('__s390x__',)},
