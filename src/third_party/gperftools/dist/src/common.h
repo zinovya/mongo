@@ -118,7 +118,9 @@ static const int kMaxDynamicFreeListLength = 8192;
 
 static const Length kMaxValidPages = (~static_cast<Length>(0)) >> kPageShift;
 
-#if __aarch64__ || __x86_64__ || _M_AMD64 || _M_ARM64
+#if __aarch64__ || __x86_64__ || _M_AMD64 || _M_ARM64 \
+    || (defined(__riscv) && defined(__riscv_xlen) && __riscv_xlen == 64)
+
 // All current x86_64 processors only look at the lower 48 bits in
 // virtual to physical address translation. The top 16 are all same as
 // bit 47. And bit 47 value 1 reserved for kernel-space addresses in

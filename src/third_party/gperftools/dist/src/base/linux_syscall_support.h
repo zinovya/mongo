@@ -130,13 +130,14 @@
 #ifndef SYS_LINUX_SYSCALL_SUPPORT_H
 #define SYS_LINUX_SYSCALL_SUPPORT_H
 
-/* We currently only support x86-32, x86-64, ARM, MIPS, PPC/PPC64, Aarch64, s390 and s390x
+/* We currently only support x86-32, x86-64, ARM, MIPS, PPC/PPC64, Aarch64, s390, s390x and riscv64
  * on Linux.
  * Porting to other related platforms should not be difficult.
  */
 #if (defined(__i386__) || defined(__x86_64__) || defined(__arm__) || \
      defined(__mips__) || defined(__PPC__) || \
-     defined(__aarch64__) || defined(__s390__)) \
+     defined(__aarch64__) || defined(__s390__)) || \
+     (defined(__riscv) && defined(__riscv_xlen) && __riscv_xlen == 64) \
   && (defined(__linux))
 
 #ifndef SYS_CPLUSPLUS
@@ -264,7 +265,7 @@ struct kernel_old_sigaction {
 } __attribute__((packed,aligned(4)));
 #elif (defined(__mips__) && _MIPS_SIM == _MIPS_SIM_ABI32)
   #define kernel_old_sigaction kernel_sigaction
-#elif defined(__aarch64__)
+#elif defined(__aarch64__) || defined(__riscv)
   // No kernel_old_sigaction defined for arm64.
 #endif
 
@@ -541,6 +542,29 @@ struct kernel_stat {
   unsigned long      __unused4;
   unsigned long      __unused5;
 };
+#elif (defined(__riscv) && defined(__riscv_xlen) && __riscv_xlen == 64)
+struct kernel_stat {
+  unsigned long      st_dev;
+  unsigned long      st_ino;
+  unsigned int       st_mode;
+  unsigned int       st_nlink;
+  unsigned int       st_uid;
+  unsigned int       st_gid;
+  unsigned long      st_rdev;
+  unsigned long      __pad1;
+  long               st_size;
+  int                st_blksize;
+  int                __pad2;
+  long               st_blocks;
+  long               st_atime_;
+  unsigned long      st_atime_nsec_;
+  long               st_mtime_;
+  unsigned long      st_mtime_nsec_;
+  long               st_ctime_;
+  unsigned long      st_ctime_nsec_;
+  unsigned int       __unused4;
+  unsigned int       __unused5;
+};
 #endif
 
 
@@ -750,11 +774,11 @@ struct kernel_stat {
 #define __NR_getcpu             302
 #endif
 /* End of powerpc defininitions                                              */
-#elif defined(__aarch64__)
+#elif defined(__aarch64__) || defined(__riscv)
 #ifndef __NR_fstatat
 #define __NR_fstatat             79
 #endif
-/* End of aarch64 defininitions                                              */
+/* End of aarch64 & riscv defininitions                                              */
 #elif defined(__s390__)
 #ifndef __NR_quotactl
 #define __NR_quotactl           131
@@ -1001,7 +1025,7 @@ struct kernel_stat {
 
   #undef  LSS_RETURN
   #if (defined(__i386__) || defined(__x86_64__) || defined(__arm__) ||        \
-       defined(__aarch64__) || defined(__s390__))
+       defined(__aarch64__) || defined(__s390__) || defined(__riscv))
   /* Failing system calls return a negative result in the range of
    * -1..-4095. These are "errno" values with the sign inverted.
    */
@@ -2328,6 +2352,150 @@ struct kernel_stat {
       }
       LSS_RETURN(int, __res);
     }
+  #elif (defined(__riscv) && defined(__riscv_xlen) && __riscv_xlen == 64)
+    #undef LSS_REG
+    #define LSS_REG(r, arg) register long int __a##r __asm__("a"#r) = (long)arg
+    #undef  LSS_BODY
+    #define LSS_BODY(type,name,args...)                                       \
+	  register long int __nr __asm__("a7") = (long int)(__NR_##name);     \
+          register long int __res_a0 __asm__("a0");                           \
+          long int __res;                                                     \
+          __asm__ __volatile__ ("scall\n\t"                                   \
+                                : "+r"(__res_a0)                              \
+                                : "r" (__nr), ## args                         \
+                                : "memory");                                  \
+          __res = __res_a0;                                                   \
+          LSS_RETURN(type, __res)
+    #undef _syscall0
+    #define _syscall0(type, name)                                             \
+      type LSS_NAME(name)(void) {                                             \
+        LSS_BODY(type, name);                                                 \
+      }
+    #undef _syscall1
+    #define _syscall1(type, name, type1, arg1)                                \
+      type LSS_NAME(name)(type1 arg1) {                                       \
+        LSS_REG(0, arg1); LSS_BODY(type, name, "r"(__a0));                    \
+      }
+    #undef _syscall2
+    #define _syscall2(type, name, type1, arg1, type2, arg2)                   \
+      type LSS_NAME(name)(type1 arg1, type2 arg2) {                           \
+        LSS_REG(0, arg1); LSS_REG(1, arg2);                                   \
+        LSS_BODY(type, name, "r"(__a0), "r"(__a1));                           \
+      }
+    #undef _syscall3
+    #define _syscall3(type, name, type1, arg1, type2, arg2, type3, arg3)      \
+      type LSS_NAME(name)(type1 arg1, type2 arg2, type3 arg3) {               \
+        LSS_REG(0, arg1); LSS_REG(1, arg2); LSS_REG(2, arg3);                 \
+        LSS_BODY(type, name, "r"(__a0), "r"(__a1), "r"(__a2));                \
+      }
+    #undef _syscall4
+    #define _syscall4(type,name,type1,arg1,type2,arg2,type3,arg3,type4,arg4)  \
+      type LSS_NAME(name)(type1 arg1, type2 arg2, type3 arg3, type4 arg4) {   \
+        LSS_REG(0, arg1); LSS_REG(1, arg2); LSS_REG(2, arg3);                 \
+        LSS_REG(3, arg4);                                                     \
+        LSS_BODY(type, name, "r"(__a0), "r"(__a1), "r"(__a2), "r"(__a3));     \
+      }
+    #undef _syscall5
+    #define _syscall5(type,name,type1,arg1,type2,arg2,type3,arg3,type4,arg4,  \
+                      type5,arg5)                                             \
+      type LSS_NAME(name)(type1 arg1, type2 arg2, type3 arg3, type4 arg4,     \
+                          type5 arg5) {                                       \
+        LSS_REG(0, arg1); LSS_REG(1, arg2); LSS_REG(2, arg3);                 \
+        LSS_REG(3, arg4); LSS_REG(4, arg5);                                   \
+        LSS_BODY(type, name, "r"(__a0), "r"(__a1), "r"(__a2), "r"(__a3),      \
+                             "r"(__a4));                                      \
+      }
+    #undef _syscall6
+    #define _syscall6(type,name,type1,arg1,type2,arg2,type3,arg3,type4,arg4,  \
+                      type5,arg5,type6,arg6)                                  \
+      type LSS_NAME(name)(type1 arg1, type2 arg2, type3 arg3, type4 arg4,     \
+                          type5 arg5, type6 arg6) {                           \
+        LSS_REG(0, arg1); LSS_REG(1, arg2); LSS_REG(2, arg3);                 \
+        LSS_REG(3, arg4); LSS_REG(4, arg5); LSS_REG(5, arg6);                 \
+        LSS_BODY(type, name, "r"(__a0), "r"(__a1), "r"(__a2), "r"(__a3),      \
+                             "r"(__a4), "r"(__a5));                           \
+      }
+    /* clone function adapted from glibc 2.27 clone.S                       */
+    LSS_INLINE int LSS_NAME(clone)(int (*fn)(void *), void *child_stack,
+                                   int flags, void *arg, int *parent_tidptr,
+                                   void *newtls, int *child_tidptr) {
+      long int __res;
+      {
+        register int (*__fn)(void *)  __asm__("a0") = fn;
+        register void *__stack __asm__("a1") = child_stack;
+        register int   __flags __asm__("a2") = flags;
+        register void *__arg   __asm__("a3") = arg;
+        register int  *__ptid  __asm__("a4") = parent_tidptr;
+        register void *__tls   __asm__("a5") = newtls;
+        register int  *__ctid  __asm__("a6") = child_tidptr;
+	__asm__ __volatile__(/* Sanity check arguments. */
+			     "beqz a0,1f\n" /* No NULL function pointers.  */
+			     "beqz a1,1f\n" /* No NULL stack pointers.  */
+
+			     "addi a1,a1,-16\n" /* Reserve argument save space.  */
+			     "sd a0,0(a1)\n" /* Save function pointer.  */
+			     "sd a3,8(a1)\n" /* Save argument pointer.  */
+
+			     /* The syscall expects the args to be in different slots.  */
+			     "mv a0,a2\n"
+			     "mv a2,a4\n"
+			     "mv a3,a5\n"
+			     "mv a4,a6\n"
+
+			     /* Do the system call.  */
+			     "li a7,%0\n" /* __NR_clone */
+			     "scall\n"
+
+			     "bltz a0,2f\n"
+			     "beqz a0,3f\n"
+
+		          "1:\n"
+			     "li a0, %1\n" /* -EINVAL */
+			     /* Something bad happened -- no child created.  */
+			  "2:\n"
+			     "j 4f\n" /* __syscall_error */
+			     /* __thread_start */
+                          "3:\n"
+			     /* Restore the arg for user's function.  */
+			     "ld a1,0(sp)\n" /* Function pointer.  */
+			     "ld a0,8(sp)\n" /* Argument pointer.  */
+			     
+			     /* Call the user's function.  */
+			     "jalr a1\n"
+
+			     /* Call exit with the function's return value.  */
+			     "li a7, %3\n" /* __NR_exit */
+			     "scall\n"
+			     /* __syscall_error */
+			  "4:\n"
+			     "mv t0, ra\n"
+			     /* Fall through to __syscall_set_errno.  */
+
+			     /* __syscall_set_errno */
+			     /* We got here because a0 < 0, but only codes in the range [-4095, -1]
+                                represent errors.  Otherwise, just return the result normally.  */
+			     "li t1, -4096\n"
+			     "bleu a0, t1, 5f\n"
+			     "neg a0, a0\n"
+
+			     /* elif defined(__PIC__) */
+			     "la.tls.ie t1, errno\n"
+			     "add t1, t1, tp\n"
+			     "sw a0, 0(t1)\n"
+			     /* else */
+
+			     "li a0, -1\n"
+			  "5:\n"
+			     "jr t0\n"
+                             : "=r" (__res)
+                             : "i"(__NR_clone), "i"(-EINVAL), "i"(__NR_exit),
+                               "r"(__fn), "r"(__stack), "r"(__flags), "r"(__arg),
+                               "r"(__ptid), "r"(__tls), "r"(__ctid)
+                             : "t0", "t1", "memory");
+      }
+      LSS_RETURN(int, __res);
+    }
+
   #elif defined(__s390__)
     #undef  LSS_REG
     #define LSS_REG(r, a) register unsigned long __r##r __asm__("r"#r) = (unsigned long) a
@@ -2554,7 +2722,8 @@ struct kernel_stat {
                          unsigned *, node, void *, unused);
   #endif
   #if defined(__x86_64__) || defined(__aarch64__) || \
-     (defined(__mips__) && _MIPS_SIM != _MIPS_SIM_ABI32)
+     (defined(__mips__) && _MIPS_SIM != _MIPS_SIM_ABI32) || \
+     defined(__riscv))
     LSS_INLINE _syscall3(int, socket,             int,   d,
                          int,                     t, int,       p)
   #endif
@@ -2586,7 +2755,7 @@ struct kernel_stat {
       return LSS_NAME(rt_sigprocmask)(how, set, oldset, (KERNEL_NSIG+7)/8);
     }
   #endif
-  #if (defined(__aarch64__)) || \
+  #if (defined(__aarch64__)) || (defined(__riscv)) || \
       (defined(__mips__) \
        && (_MIPS_SIM == _MIPS_SIM_ABI64 || _MIPS_SIM == _MIPS_SIM_NABI32))
     LSS_INLINE int LSS_NAME(sigaction)(int signum,
