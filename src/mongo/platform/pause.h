@@ -73,6 +73,9 @@
 // TODO: What should this be?
 #define MONGO_YIELD_CORE_FOR_SMT()
 
+#elif defined(__riscv)
+#define MONGO_YIELD_CORE_FOR_SMT() __asm__ volatile("nop")
+
 #else
 #error "No processor pause implementation for this architecture."
 #endif
