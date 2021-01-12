@@ -85,7 +85,7 @@
 #define NO_NSPR_10_SUPPORT 1
 #define RELEASE_OR_BETA 1
 #define STDC_HEADERS 1
-#not defined anywhere else
+//#not defined anywhere else
 //#define U_STATIC_IMPLEMENTATION 1
 //#define U_USING_ICU_NAMESPACE 0
 #define VA_COPY va_copy

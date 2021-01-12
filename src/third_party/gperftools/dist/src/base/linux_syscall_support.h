@@ -2723,7 +2723,7 @@ struct kernel_stat {
   #endif
   #if defined(__x86_64__) || defined(__aarch64__) || \
      (defined(__mips__) && _MIPS_SIM != _MIPS_SIM_ABI32) || \
-     defined(__riscv))
+     defined(__riscv)
     LSS_INLINE _syscall3(int, socket,             int,   d,
                          int,                     t, int,       p)
   #endif
