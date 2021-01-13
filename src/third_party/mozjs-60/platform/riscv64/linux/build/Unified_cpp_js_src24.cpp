@@ -1,55 +1,55 @@
 #define MOZ_UNIFIED_BUILD
-#include "jit/arm64/Trampoline-arm64.cpp"
+#include "jsfriendapi.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "jit/arm64/Trampoline-arm64.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "jsfriendapi.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "jit/arm64/Trampoline-arm64.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "jsfriendapi.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "jit/arm64/vixl/Assembler-vixl.cpp"
+#include "jsnum.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "jit/arm64/vixl/Assembler-vixl.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "jsnum.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "jit/arm64/vixl/Assembler-vixl.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "jsnum.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "jit/arm64/vixl/Cpu-vixl.cpp"
+#include "perf/jsperf.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "jit/arm64/vixl/Cpu-vixl.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "perf/jsperf.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "jit/arm64/vixl/Cpu-vixl.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "perf/jsperf.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "jit/arm64/vixl/Decoder-vixl.cpp"
+#include "proxy/BaseProxyHandler.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "jit/arm64/vixl/Decoder-vixl.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "proxy/BaseProxyHandler.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "jit/arm64/vixl/Decoder-vixl.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "proxy/BaseProxyHandler.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "jit/arm64/vixl/Disasm-vixl.cpp"
+#include "proxy/CrossCompartmentWrapper.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "jit/arm64/vixl/Disasm-vixl.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "proxy/CrossCompartmentWrapper.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "jit/arm64/vixl/Disasm-vixl.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "proxy/CrossCompartmentWrapper.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "jit/arm64/vixl/Instructions-vixl.cpp"
+#include "proxy/DeadObjectProxy.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "jit/arm64/vixl/Instructions-vixl.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "proxy/DeadObjectProxy.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "jit/arm64/vixl/Instructions-vixl.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "proxy/DeadObjectProxy.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
