@@ -74,7 +74,8 @@
 #define MONGO_YIELD_CORE_FOR_SMT()
 
 #elif defined(__riscv)
-#define MONGO_YIELD_CORE_FOR_SMT() __asm__ volatile("nop")
+int randomDelay = 255; // Number of cycles to wait.
+#define MONGO_YIELD_CORE_FOR_SMT() __asm__ __volatile__ ("csrw   0xf, %0" : "+r" (randomDelay));
 
 #else
 #error "No processor pause implementation for this architecture."
