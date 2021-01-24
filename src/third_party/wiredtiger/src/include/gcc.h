@@ -283,8 +283,12 @@ WT_ATOMIC_FUNC(size, size_t, size_t *vp, size_t v)
 #elif defined(__riscv)
 
 // Number of cycles to wait.
-int randomDelay=1000;
-#define WT_PAUSE() __asm__ __volatile__ ("csrw   0xf, %0" : "+r" (randomDelay));
+//int randomDelay=1000;
+#define WT_PAUSE()                                                     \
+    do {                                                               \
+          int randomDelay=1000;                                        \
+          __asm__ __volatile__ ("csrw   0xf, %0" : "+r" (randomDelay));\
+    } while(0)
 
 #define WT_FULL_BARRIER()                           \
     do {                                            \
