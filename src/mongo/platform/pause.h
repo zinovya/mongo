@@ -74,9 +74,12 @@
 #define MONGO_YIELD_CORE_FOR_SMT()
 
 #elif defined(__riscv)
-int randomDelay=1000;
-#define MONGO_YIELD_CORE_FOR_SMT()  __asm__ __volatile__ ("csrw   0xf, %0" : "+r" (randomDelay));
-
+//int randomDelay=1000;
+#define MONGO_YIELD_CORE_FOR_SMT()                                                     \
+    do {                                                               \
+          int randomDelay=1000;                                        \
+          __asm__ __volatile__ ("csrw   0xf, %0" : "+r" (randomDelay));\
+    } while(0)
 
 #else
 #error "No processor pause implementation for this architecture."

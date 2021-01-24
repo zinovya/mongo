@@ -1,55 +1,55 @@
 #define MOZ_UNIFIED_BUILD
-#include "vm/TaggedProto.cpp"
+#include "wasm/WasmFrameIter.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/TaggedProto.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "wasm/WasmFrameIter.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/TaggedProto.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "wasm/WasmFrameIter.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/Time.cpp"
+#include "wasm/WasmGenerator.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/Time.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "wasm/WasmGenerator.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/Time.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "wasm/WasmGenerator.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/TypeInference.cpp"
+#include "wasm/WasmInstance.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/TypeInference.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "wasm/WasmInstance.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/TypeInference.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "wasm/WasmInstance.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/TypedArrayObject.cpp"
+#include "wasm/WasmIonCompile.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/TypedArrayObject.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "wasm/WasmIonCompile.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/TypedArrayObject.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "wasm/WasmIonCompile.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/UbiNode.cpp"
+#include "wasm/WasmJS.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/UbiNode.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "wasm/WasmJS.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/UbiNode.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "wasm/WasmJS.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/UbiNodeCensus.cpp"
+#include "wasm/WasmModule.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/UbiNodeCensus.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "wasm/WasmModule.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/UbiNodeCensus.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "wasm/WasmModule.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif

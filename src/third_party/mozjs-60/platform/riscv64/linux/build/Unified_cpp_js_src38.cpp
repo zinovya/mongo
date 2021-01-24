@@ -1,55 +1,55 @@
 #define MOZ_UNIFIED_BUILD
-#include "vm/Runtime.cpp"
+#include "vm/Value.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/Runtime.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/Value.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/Runtime.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/Value.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/SavedStacks.cpp"
+#include "vm/Xdr.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/SavedStacks.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/Xdr.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/SavedStacks.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/Xdr.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/Scope.cpp"
+#include "wasm/AsmJS.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/Scope.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "wasm/AsmJS.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/Scope.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "wasm/AsmJS.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/SelfHosting.cpp"
+#include "wasm/WasmBaselineCompile.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/SelfHosting.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "wasm/WasmBaselineCompile.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/SelfHosting.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "wasm/WasmBaselineCompile.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/Shape.cpp"
+#include "wasm/WasmBinaryIterator.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/Shape.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "wasm/WasmBinaryIterator.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/Shape.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "wasm/WasmBinaryIterator.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/SharedArrayObject.cpp"
+#include "wasm/WasmBinaryToAST.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/SharedArrayObject.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "wasm/WasmBinaryToAST.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/SharedArrayObject.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "wasm/WasmBinaryToAST.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif

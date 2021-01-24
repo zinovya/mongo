@@ -1,55 +1,55 @@
 #define MOZ_UNIFIED_BUILD
-#include "proxy/CrossCompartmentWrapper.cpp"
+#include "vm/AsyncIteration.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "proxy/CrossCompartmentWrapper.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/AsyncIteration.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "proxy/CrossCompartmentWrapper.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/AsyncIteration.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "proxy/DeadObjectProxy.cpp"
+#include "vm/BytecodeUtil.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "proxy/DeadObjectProxy.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/BytecodeUtil.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "proxy/DeadObjectProxy.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/BytecodeUtil.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "proxy/OpaqueCrossCompartmentWrapper.cpp"
+#include "vm/Caches.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "proxy/OpaqueCrossCompartmentWrapper.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/Caches.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "proxy/OpaqueCrossCompartmentWrapper.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/Caches.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "proxy/Proxy.cpp"
+#include "vm/CallNonGenericMethod.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "proxy/Proxy.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/CallNonGenericMethod.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "proxy/Proxy.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/CallNonGenericMethod.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "proxy/ScriptedProxyHandler.cpp"
+#include "vm/CharacterEncoding.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "proxy/ScriptedProxyHandler.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/CharacterEncoding.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "proxy/ScriptedProxyHandler.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/CharacterEncoding.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "proxy/SecurityWrapper.cpp"
+#include "vm/CodeCoverage.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "proxy/SecurityWrapper.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/CodeCoverage.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "proxy/SecurityWrapper.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/CodeCoverage.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif

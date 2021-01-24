@@ -1,55 +1,55 @@
 #define MOZ_UNIFIED_BUILD
-#include "vm/EnvironmentObject.cpp"
+#include "vm/ObjectGroup.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/EnvironmentObject.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/ObjectGroup.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/EnvironmentObject.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/ObjectGroup.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/ErrorObject.cpp"
+#include "vm/PIC.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/ErrorObject.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/PIC.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/ErrorObject.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/PIC.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/ErrorReporting.cpp"
+#include "vm/PosixNSPR.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/ErrorReporting.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/PosixNSPR.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/ErrorReporting.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/PosixNSPR.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/ForOfIterator.cpp"
+#include "vm/Printer.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/ForOfIterator.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/Printer.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/ForOfIterator.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/Printer.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/GeckoProfiler.cpp"
+#include "vm/Probes.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/GeckoProfiler.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/Probes.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/GeckoProfiler.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/Probes.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/GeneratorObject.cpp"
+#include "vm/ProxyObject.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/GeneratorObject.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/ProxyObject.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/GeneratorObject.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/ProxyObject.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif

@@ -1,55 +1,55 @@
 #define MOZ_UNIFIED_BUILD
-#include "util/NativeStack.cpp"
+#include "vm/ErrorReporting.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "util/NativeStack.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/ErrorReporting.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "util/NativeStack.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/ErrorReporting.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "util/Printf.cpp"
+#include "vm/ForOfIterator.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "util/Printf.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/ForOfIterator.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "util/Printf.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/ForOfIterator.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "util/StringBuffer.cpp"
+#include "vm/GeckoProfiler.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "util/StringBuffer.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/GeckoProfiler.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "util/StringBuffer.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/GeckoProfiler.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "util/Text.cpp"
+#include "vm/GeneratorObject.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "util/Text.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/GeneratorObject.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "util/Text.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/GeneratorObject.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "util/Unicode.cpp"
+#include "vm/GlobalObject.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "util/Unicode.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/GlobalObject.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "util/Unicode.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/GlobalObject.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "vm/ArgumentsObject.cpp"
+#include "vm/HelperThreads.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "vm/ArgumentsObject.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/HelperThreads.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "vm/ArgumentsObject.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/HelperThreads.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif

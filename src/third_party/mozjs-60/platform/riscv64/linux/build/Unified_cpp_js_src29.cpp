@@ -1,55 +1,55 @@
 #define MOZ_UNIFIED_BUILD
-#include "proxy/Wrapper.cpp"
+#include "vm/Compression.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "proxy/Wrapper.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/Compression.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "proxy/Wrapper.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/Compression.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "threading/Mutex.cpp"
+#include "vm/DateTime.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "threading/Mutex.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/DateTime.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "threading/Mutex.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/DateTime.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "threading/ProtectedData.cpp"
+#include "vm/Debugger.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "threading/ProtectedData.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/Debugger.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "threading/ProtectedData.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/Debugger.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "threading/posix/CpuCount.cpp"
+#include "vm/DebuggerMemory.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "threading/posix/CpuCount.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/DebuggerMemory.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "threading/posix/CpuCount.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/DebuggerMemory.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "threading/posix/Thread.cpp"
+#include "vm/EnvironmentObject.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "threading/posix/Thread.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/EnvironmentObject.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "threading/posix/Thread.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/EnvironmentObject.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
-#include "util/AllocPolicy.cpp"
+#include "vm/ErrorObject.cpp"
 #ifdef PL_ARENA_CONST_ALIGN_MASK
-#error "util/AllocPolicy.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
+#error "vm/ErrorObject.cpp uses PL_ARENA_CONST_ALIGN_MASK, so it cannot be built in unified mode."
 #undef PL_ARENA_CONST_ALIGN_MASK
 #endif
 #ifdef INITGUID
-#error "util/AllocPolicy.cpp defines INITGUID, so it cannot be built in unified mode."
+#error "vm/ErrorObject.cpp defines INITGUID, so it cannot be built in unified mode."
 #undef INITGUID
 #endif
